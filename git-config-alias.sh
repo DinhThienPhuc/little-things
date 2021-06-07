@@ -45,3 +45,7 @@ git config --global alias.rbi '!git rebase -i'
 git config --global alias.rbc '!git rebase --continue'
 
 git config --global alias.po '!git pull origin'
+
+git config --global alias.pu '!git push'
+
+git config --global alias.pf '!git push --force'
