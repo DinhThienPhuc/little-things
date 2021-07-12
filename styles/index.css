@@ -1,0 +1,8 @@
+.text {
+    color: var(--primary-color);
+}
+
+.button {
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+}
