@@ -1,0 +1,37 @@
+.c-stepper {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.c-stepper__item {
+  --size: 3rem;
+  --spacing: 0.5rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.c-stepper__item:before {
+  content: "";
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: var(--size);
+  height: var(--size);
+  border-radius: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  background: cornflowerblue;
+}
+
+.c-stepper__item:not(:last-child):after {
+  content: "";
+  position: relative;
+  height: 2px;
+  background-color: #e0e0e0;
+  order: -1;
+  top: 1.5rem;
+  left: calc(50% + var(--size) / 2 + var(--spacing) / 2);
+  width: calc(100% - var(--size) - var(--spacing));
+}
