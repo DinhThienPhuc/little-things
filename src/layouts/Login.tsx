@@ -1,20 +1,18 @@
-import { ReactNode } from "react";
 import styled from "styled-components";
+import Login from "../pages/Login";
 
-interface Props {
-  children: ReactNode;
-}
-
-const Login = ({ children }: Props) => {
+const LoginLayout = () => {
   return (
     <Styled.Container className="login-layout">
       <h4>Login layout</h4>
-      <div>{children}</div>
+      <div>
+        <Login />
+      </div>
     </Styled.Container>
   );
 };
 
-export default Login;
+export default LoginLayout;
 
 const Styled = {
   Container: styled.div`

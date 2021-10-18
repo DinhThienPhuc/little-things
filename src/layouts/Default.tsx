@@ -1,14 +1,12 @@
-import { ReactNode, useCallback, useEffect, useMemo } from "react";
+import { useCallback, useEffect, useMemo } from "react";
+import { Switch } from "react-router-dom";
 import styled from "styled-components";
 import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 import ROUTES from "../auth/routes";
+import AuthRoute from "../auth/AuthRoute";
 
-interface Props {
-  children: ReactNode;
-}
-
-const Default = ({ children }: Props) => {
+const Default = () => {
   const history = useHistory();
   useEffect(() => {
     console.log("render default layout");
@@ -22,6 +20,23 @@ const Default = ({ children }: Props) => {
             <Link to={route.path}>{route.title}</Link>
           </li>
         )
+    );
+  }, []);
+
+  const routes = useMemo(() => {
+    return (
+      <Switch>
+        {Object.values(ROUTES).map(
+          (route) =>
+            route.isAuthenticated && (
+              <AuthRoute
+                path={route.path}
+                exact={route.exact}
+                Component={route.component}
+              />
+            )
+        )}
+      </Switch>
     );
   }, []);
 
@@ -39,7 +54,7 @@ const Default = ({ children }: Props) => {
         </button>
       </Styled.Navigation>
       <h4>Default layout</h4>
-      <div>{children}</div>
+      {routes}
     </Styled.Container>
   );
 };
